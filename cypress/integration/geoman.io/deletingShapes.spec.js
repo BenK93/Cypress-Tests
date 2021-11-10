@@ -3,21 +3,33 @@ describe("Test: Deleting Shapes", () => {
   beforeEach(() => {
     cy.visit("https://geoman.io/geojson-editor");
   });
-  //   zoom in
-  it("Deleting Circle", () => {
+  //   deleting circle
+  it("Deleting Custom Circle", () => {
     cy.get(".leaflet-pm-icon-circle").click();
     cy.get("#map").click(250, 220);
     cy.get("#map").click(250, 120);
     cy.get(".leaflet-pm-icon-delete").click();
     cy.get("#map").click(250, 200);
-    returnElement()
-      .find("g")
-      .should(($g) => {
-        expect($g).to.have.length(0);
+    fatherOfShapesElement()
+      .find("path")
+      .should(($path) => {
+        expect($path).to.have.length(0);
+      });
+  });
+  //   deleting simple circle
+  it("Deleting Simple Circle", () => {
+    cy.get(".leaflet-pm-icon-circle-marker").click();
+    cy.get("#map").click(250, 220);
+    cy.get(".leaflet-pm-icon-delete").click();
+    cy.get("#map").click(250, 220);
+    fatherOfShapesElement()
+      .find("path")
+      .should(($path) => {
+        expect($path).to.have.length(0);
       });
   });
 
-  const returnElement = () => {
+  const fatherOfShapesElement = () => {
     return cy.get(
       "#map > div.leaflet-pane.leaflet-map-pane > div.leaflet-pane.leaflet-overlay-pane > svg > g"
     );
