@@ -22,10 +22,6 @@ describe("Test: Dragging Shapes", () => {
       .trigger("mousemove", {
         clientX: xCoord + 150,
         clientY: yCoord + 150,
-        screenX: xCoord + 150,
-        screenY: yCoord + 150,
-        pageX: xCoord + 150,
-        pageY: yCoord + 150,
       })
       .trigger("mouseup", { force: true });
     fatherOfShapesElement().should("have.length", 1);
