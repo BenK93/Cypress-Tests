@@ -17,7 +17,7 @@ describe("Test:Zoom Button", () => {
   it("Max Zoom Out", () => {
     const zoomOutBtn = cy.get(".leaflet-control-zoom-out");
     let counterClicks = 0;
-    while (counterClicks < 13) {
+    while (counterClicks < 15) {
       counterClicks++;
       cy.wait(200);
       cy.get(".leaflet-control-zoom-out").click();
