@@ -9,9 +9,7 @@ describe("Test:Creating Shapes", () => {
       "#map > div.leaflet-control-container > div.leaflet-top.leaflet-left > div.leaflet-pm-toolbar.leaflet-pm-draw.leaflet-bar.leaflet-control > div:nth-child(6)"
     ).click();
     cy.get("#map").click(250, 320);
-    cy.get(
-      "#map > div.leaflet-pane.leaflet-map-pane > div.leaflet-pane.leaflet-overlay-pane > svg > g"
-    ).should("have.length", 1);
+    returnAssertion().should("have.length", 1);
   });
   //   custom circle
   it("Creating Custom Circle", () => {
@@ -20,9 +18,7 @@ describe("Test:Creating Shapes", () => {
     ).click();
     cy.get("#map").click(250, 220);
     cy.get("#map").click(250, 150);
-    cy.get(
-      "#map > div.leaflet-pane.leaflet-map-pane > div.leaflet-pane.leaflet-overlay-pane > svg > g"
-    ).should("have.length", 1);
+    returnAssertion().should("have.length", 1);
   });
   //   custom polygon
   it("Creating Polygon", () => {
@@ -33,9 +29,7 @@ describe("Test:Creating Shapes", () => {
     cy.get("#map").click(200, 320);
     cy.get("#map").click(180, 250);
     cy.get("#map").click(250, 320);
-    cy.get(
-      "#map > div.leaflet-pane.leaflet-map-pane > div.leaflet-pane.leaflet-overlay-pane > svg > g"
-    ).should("have.length", 1);
+    returnAssertion().should("have.length", 1);
   });
   //   custom polyline
   it("Creating Polyline", () => {
@@ -49,8 +43,12 @@ describe("Test:Creating Shapes", () => {
     cy.get("#map").click(140, 150);
     cy.get("#map").click(100, 150);
     cy.get("#map").click(100, 150);
-    cy.get(
-      "#map > div.leaflet-pane.leaflet-map-pane > div.leaflet-pane.leaflet-overlay-pane > svg > g"
-    ).should("have.length", 1);
+    returnAssertion().should("have.length", 1);
   });
+
+  const returnAssertion = () => {
+    return cy.get(
+      "#map > div.leaflet-pane.leaflet-map-pane > div.leaflet-pane.leaflet-overlay-pane > svg > g"
+    );
+  };
 });
