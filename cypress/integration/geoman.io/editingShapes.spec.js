@@ -1,9 +1,6 @@
 /// <reference types="cypress" />
 
 describe("Test: Editing Shapes", () => {
-  const xCoord = 150;
-  const yCoord = 100;
-
   beforeEach(() => {
     cy.visit("https://geoman.io/geojson-editor");
   });
@@ -16,12 +13,9 @@ describe("Test: Editing Shapes", () => {
     cy.get("#map").click(140, 200);
     cy.get("#map").click(140, 200);
     cy.get(".leaflet-pm-icon-edit").click();
-    cy.wait(1000);
-
+    cy.wait(500);
     // dragging
-    cy.get(
-      "#map > div.leaflet-pane.leaflet-map-pane > div.leaflet-pane.leaflet-marker-pane > div:nth-child(1)"
-    )
+    cy.get(".leaflet-marker-draggable:nth(1)")
       .trigger("mouseover")
       .trigger("mousedown", { which: 1, force: true })
       .trigger("mousemove", {

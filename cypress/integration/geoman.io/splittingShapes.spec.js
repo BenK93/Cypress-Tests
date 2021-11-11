@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-describe("Test: Dragging Shapes", () => {
+describe("Test: Splitting Shapes", () => {
   const xCoord = 50;
   const yCoord = 50;
 
@@ -8,7 +8,8 @@ describe("Test: Dragging Shapes", () => {
     cy.visit("https://geoman.io/geojson-editor");
   });
 
-  it("Splitting Polygon", () => {
+  it("Splitting Polygon to 2 Polygons", () => {
+    // Slitting the Polygon to 2 separated polygons - like Ron said
     cy.get(".leaflet-pm-icon-polygon").click();
     cy.get("#map").click(xCoord, yCoord);
     cy.get("#map").click(250, 50);
